@@ -1,0 +1,232 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500&family=Space+Grotesk:wght@500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 14% 4%;
+    --foreground: 40 20% 94%;
+    --card: 240 12% 10%;
+    --card-foreground: 40 20% 94%;
+    --popover: 240 12% 10%;
+    --popover-foreground: 40 20% 94%;
+    --primary: 345 100% 65%;
+    --primary-foreground: 40 20% 94%;
+    --secondary: 240 8% 14%;
+    --secondary-foreground: 40 20% 94%;
+    --muted: 240 8% 14%;
+    --muted-foreground: 30 8% 68%;
+    --accent: 345 100% 65%;
+    --accent-foreground: 40 20% 94%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 40 20% 94% / 0.08;
+    --input: 240 8% 14%;
+    --ring: 345 100% 65%;
+    --radius: 1.75rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+  }
+}
+
+/* Typography */
+.font-heading {
+  font-family: 'Poppins', sans-serif;
+}
+
+.font-accent {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+/* Grain overlay */
+.grain-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1000;
+  opacity: 0.08;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* Floating hearts animation */
+@keyframes float-up {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.4;
+  }
+  90% {
+    opacity: 0.4;
+  }
+  100% {
+    transform: translateY(-100vh) rotate(15deg);
+    opacity: 0;
+  }
+}
+
+@keyframes float-heart {
+  0%, 100% {
+    transform: translateY(0) rotate(-5deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(5deg);
+  }
+}
+
+.floating-heart {
+  animation: float-heart 6s ease-in-out infinite;
+}
+
+/* Heart pulse */
+@keyframes heart-pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.heart-pulse {
+  animation: heart-pulse 1.5s ease-in-out infinite;
+}
+
+/* Button hover effects */
+.btn-primary {
+  @apply bg-[#FF4D7B] text-white font-accent uppercase tracking-widest text-sm px-8 py-4 rounded-full transition-all duration-200;
+}
+
+.btn-primary:hover {
+  transform: scale(1.04);
+}
+
+.btn-primary:active {
+  transform: scale(0.98);
+}
+
+.btn-secondary {
+  @apply border border-[#F4F1EC]/30 text-[#F4F1EC] font-accent uppercase tracking-widest text-sm px-8 py-4 rounded-full transition-all duration-200 bg-transparent;
+}
+
+.btn-secondary:hover {
+  transform: scale(1.04);
+  border-color: rgba(244, 241, 236, 0.5);
+}
+
+/* Option button for quiz */
+.btn-option {
+  @apply transition-all duration-200;
+}
+
+.btn-option:hover {
+  transform: translateY(-2px);
+}
+
+.btn-option:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* Card styles */
+.valentine-card {
+  @apply bg-[#14141B] rounded-[28px] shadow-[0_24px_70px_rgba(0,0,0,0.45)] border border-[#F4F1EC]/[0.08];
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0B0B10;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #FF4D7B;
+  border-radius: 3px;
+}
+
+/* Wireframe heart background */
+.wireframe-heart {
+  stroke: rgba(244, 241, 236, 0.06);
+  stroke-width: 1;
+  fill: none;
+}
+
+/* Confetti canvas */
+.confetti-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* Section pinned */
+.section-pinned {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Responsive text */
+.text-responsive-hero {
+  font-size: clamp(2rem, 6vw, 5.25rem);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+}
+
+.text-responsive-section {
+  font-size: clamp(1.75rem, 4vw, 3.5rem);
+  line-height: 1.05;
+}
+
+.text-responsive-body {
+  font-size: clamp(0.875rem, 1.6vw, 1.25rem);
+  line-height: 1.6;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .valentine-card {
+    border-radius: 20px;
+  }
+  
+  .btn-primary,
+  .btn-secondary {
+    @apply px-6 py-3 text-xs;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .floating-heart {
+    animation: none;
+  }
+  
+  .heart-pulse {
+    animation: none;
+  }
+}

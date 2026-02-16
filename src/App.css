@@ -1,0 +1,103 @@
+/* App-specific styles */
+
+/* Float up animation for background hearts */
+@keyframes float-up {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.4;
+  }
+  90% {
+    opacity: 0.4;
+  }
+  100% {
+    transform: translateY(-100vh) rotate(15deg);
+    opacity: 0;
+  }
+}
+
+/* Animation for success overlay */
+.animate-in {
+  animation: animate-in 0.35s ease-out forwards;
+}
+
+@keyframes animate-in {
+  from {
+    opacity: 0;
+    transform: scale(0.85) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fade-in 0.35s ease-out forwards;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.zoom-in {
+  animation: zoom-in 0.35s ease-out forwards;
+}
+
+@keyframes zoom-in {
+  from {
+    transform: scale(0.85);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+/* Smooth scroll behavior for sections */
+.section-pinned {
+  will-change: transform;
+}
+
+/* Card hover effect */
+.valentine-card {
+  will-change: transform, opacity;
+}
+
+/* Button transitions */
+button {
+  will-change: transform;
+}
+
+/* Mobile touch improvements */
+@media (hover: none) {
+  .btn-primary:hover,
+  .btn-secondary:hover {
+    transform: none;
+  }
+  
+  .btn-primary:active,
+  .btn-secondary:active {
+    transform: scale(0.98);
+  }
+}
+
+/* Prevent text selection on interactive elements */
+button,
+[role="button"] {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Improve scrolling on mobile */
+@supports (-webkit-touch-callout: none) {
+  .section-pinned {
+    min-height: -webkit-fill-available;
+  }
+}
